@@ -1,0 +1,58 @@
+<!doctype html> 
+<html lang="en">
+
+<body>
+  <input type="file" name="file-control" accept="application/pdf" id="file">
+<button id="check">
+  check
+  </button>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js">
+</script>
+<script>
+  document.getElementById("check").addEventListener("click", () => {
+ 
+     
+     /*
+pdfjsLib.getDocument("./f.pdf").then((pdf) => {
+pdf.getPage(1).then(r => r.getTextContent().then(info => {
+  
+  for(let i=0;i<info.items.length;i++) {
+    console.log(info.items[i].str)
+  }
+}))
+  
+})
+*/
+
+
+var fileReader=new FileReader();
+
+function displayPDF(file) {
+ fileReader.onload=loadHandler;
+ fileReader.readAsArrayBuffer(file);
+}
+
+function loadHandler(loadEvent) {
+ var buffer=this.result;
+
+ console.log(pdfjsLib.getDocument(buffer).then(obtainPDF))
+}
+
+function obtainPDF(pdfObj) {
+ 
+ return pdfObj.getPage(1)
+}
+
+let file = document.getElementById("file")
+
+
+
+  })
+   
+
+  
+ </script>
+</body>
+</html>
+
